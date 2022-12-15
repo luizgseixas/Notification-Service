@@ -1,7 +1,9 @@
-import { Notification } from '../../../application/entities/notification';
-import { NotificationsRepository } from '../../../application/repositories/notifications-repository';
+import { Injectable } from '@nestjs/common';
+import { Notification } from '@application/entities/notification';
+import { NotificationsRepository } from '@application/repositories/notifications-repository';
 import { PrismaService } from '../prisma/prisma.service';
 
+@Injectable()
 export class PrismaNotificationsRepository implements NotificationsRepository {
   constructor(private prismaService: PrismaService) {}
 
@@ -16,6 +18,5 @@ export class PrismaNotificationsRepository implements NotificationsRepository {
         createdAt: notification.createdAt,
       },
     });
-    throw new Error('Method not implemented.');
   }
 }
